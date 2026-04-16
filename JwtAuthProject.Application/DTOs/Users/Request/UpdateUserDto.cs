@@ -1,0 +1,9 @@
+
+namespace JwtAuthProject.Application.DTOs.Users.Request;
+
+public class UpdateUserDto
+{
+    public string Username { get; set; } = string.Empty;
+    public string Email { get; set; } = string.Empty;
+    public string Role { get; set; } = "User";
+}

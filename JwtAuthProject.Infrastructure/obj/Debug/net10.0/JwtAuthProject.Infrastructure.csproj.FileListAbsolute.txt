@@ -1,0 +1,17 @@
+C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\JwtAuthProject.Infrastructure\bin\Debug\net10.0\JwtAuthProject.Infrastructure.deps.json
+C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\JwtAuthProject.Infrastructure\bin\Debug\net10.0\JwtAuthProject.Infrastructure.dll
+C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\JwtAuthProject.Infrastructure\bin\Debug\net10.0\JwtAuthProject.Infrastructure.pdb
+C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\JwtAuthProject.Infrastructure\bin\Debug\net10.0\JwtAuthProject.Application.dll
+C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\JwtAuthProject.Infrastructure\bin\Debug\net10.0\JwtAuthProject.Domain.dll
+C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\JwtAuthProject.Infrastructure\bin\Debug\net10.0\JwtAuthProject.Application.pdb
+C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\JwtAuthProject.Infrastructure\bin\Debug\net10.0\JwtAuthProject.Domain.pdb
+C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\JwtAuthProject.Infrastructure\obj\Debug\net10.0\JwtAuthProject.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\JwtAuthProject.Infrastructure\obj\Debug\net10.0\JwtAuthProject.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\JwtAuthProject.Infrastructure\obj\Debug\net10.0\JwtAuthProject.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\JwtAuthProject.Infrastructure\obj\Debug\net10.0\JwtAuthProject.Infrastructure.AssemblyInfo.cs
+C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\JwtAuthProject.Infrastructure\obj\Debug\net10.0\JwtAuthProject.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\JwtAuthProject.Infrastructure\obj\Debug\net10.0\JwtAuthP.34751385.Up2Date
+C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\JwtAuthProject.Infrastructure\obj\Debug\net10.0\JwtAuthProject.Infrastructure.dll
+C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\JwtAuthProject.Infrastructure\obj\Debug\net10.0\refint\JwtAuthProject.Infrastructure.dll
+C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\JwtAuthProject.Infrastructure\obj\Debug\net10.0\JwtAuthProject.Infrastructure.pdb
+C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\JwtAuthProject.Infrastructure\obj\Debug\net10.0\ref\JwtAuthProject.Infrastructure.dll

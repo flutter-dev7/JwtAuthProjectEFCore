@@ -1,0 +1,15 @@
+C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\JwtAuthProject.Application\bin\Debug\net10.0\JwtAuthProject.Application.deps.json
+C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\JwtAuthProject.Application\bin\Debug\net10.0\JwtAuthProject.Application.dll
+C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\JwtAuthProject.Application\bin\Debug\net10.0\JwtAuthProject.Application.pdb
+C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\JwtAuthProject.Application\bin\Debug\net10.0\JwtAuthProject.Domain.dll
+C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\JwtAuthProject.Application\bin\Debug\net10.0\JwtAuthProject.Domain.pdb
+C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\JwtAuthProject.Application\obj\Debug\net10.0\JwtAuthProject.Application.csproj.AssemblyReference.cache
+C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\JwtAuthProject.Application\obj\Debug\net10.0\JwtAuthProject.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\JwtAuthProject.Application\obj\Debug\net10.0\JwtAuthProject.Application.AssemblyInfoInputs.cache
+C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\JwtAuthProject.Application\obj\Debug\net10.0\JwtAuthProject.Application.AssemblyInfo.cs
+C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\JwtAuthProject.Application\obj\Debug\net10.0\JwtAuthProject.Application.csproj.CoreCompileInputs.cache
+C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\JwtAuthProject.Application\obj\Debug\net10.0\JwtAuthP.48DC145C.Up2Date
+C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\JwtAuthProject.Application\obj\Debug\net10.0\JwtAuthProject.Application.dll
+C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\JwtAuthProject.Application\obj\Debug\net10.0\refint\JwtAuthProject.Application.dll
+C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\JwtAuthProject.Application\obj\Debug\net10.0\JwtAuthProject.Application.pdb
+C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\JwtAuthProject.Application\obj\Debug\net10.0\ref\JwtAuthProject.Application.dll
