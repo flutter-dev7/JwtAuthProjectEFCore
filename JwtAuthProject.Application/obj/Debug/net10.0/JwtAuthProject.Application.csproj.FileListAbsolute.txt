@@ -13,3 +13,4 @@ C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\Jw
 C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\JwtAuthProject.Application\obj\Debug\net10.0\refint\JwtAuthProject.Application.dll
 C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\JwtAuthProject.Application\obj\Debug\net10.0\JwtAuthProject.Application.pdb
 C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\JwtAuthProject.Application\obj\Debug\net10.0\ref\JwtAuthProject.Application.dll
+C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month2\week2\JwtAuthProject\JwtAuthProject.Application\obj\Debug\net10.0\JwtAuthProject.Application.sourcelink.json

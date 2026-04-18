@@ -5,6 +5,7 @@ using JwtAuthProject.Application.Interfaces.Repositories;
 using JwtAuthProject.Application.Interfaces.Services;
 using JwtAuthProject.Application.Services;
 using JwtAuthProject.Domain.Entities;
+using JwtAuthProject.Infrastructure.BackgroundJobs;
 using JwtAuthProject.Infrastructure.Data;
 using JwtAuthProject.Infrastructure.Repositories;
 using JwtAuthProject.Infrastructure.Seeds;
@@ -61,6 +62,8 @@ builder.Services.Configure<EmailSettings>(
 builder.Services.AddIdentity<AppUser, IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();
+
+builder.Services.AddHostedService<ExpiredCodeCleanerService>();
 
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IJwtService, JwtService>();
