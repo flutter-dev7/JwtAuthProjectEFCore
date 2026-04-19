@@ -14,7 +14,6 @@
     <ProjectReference Include="..\JwtAuthProject.Domain\JwtAuthProject.Domain.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="BackgroundJobs\" />
     <Folder Include="Repositories\" />
     <Folder Include="Seeds\" />
   </ItemGroup>

@@ -1,4 +1,6 @@
 using System.Text;
+using Hangfire;
+using Hangfire.PostgreSql;
 using JwtAuthProject.Api.Middleware;
 using JwtAuthProject.Application.Common;
 using JwtAuthProject.Application.Interfaces.Repositories;
@@ -63,13 +65,26 @@ builder.Services.AddIdentity<AppUser, IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();
 
-builder.Services.AddHostedService<ExpiredCodeCleanerService>();
+builder.Services.AddHangfire(config =>
+    config.UsePostgreSqlStorage(options => options.UseNpgsqlConnection(connectionString)));
+
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = "localhost:6379";
+    options.InstanceName = "JwtAuthProject";
+});
+
+builder.Services.AddHangfireServer();
+// builder.Services.AddMemoryCache();
+// builder.Services.AddHostedService<ExpiredCodeCleanerService>();
 
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IJwtService, JwtService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IVerificationCodeRepository, VerificationCodeRepository>();
+builder.Services.AddScoped<ICacheService, CacheService>();
+builder.Services.AddScoped<ExpiredCodeCleanerJob>();
 
 
 var jwtSettings = builder.Configuration.GetSection("Jwt");
@@ -86,8 +101,8 @@ builder.Services.AddAuthentication(options =>
     {
         ValidateIssuer = true,
         ValidateAudience = true,
-        ValidateLifetime = true,  
-        ValidateIssuerSigningKey = true, 
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
         ValidIssuer = jwtSettings["Issuer"],
         ValidAudience = jwtSettings["Audience"],
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
@@ -97,6 +112,17 @@ builder.Services.AddAuthentication(options =>
 
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var recurringJobManager = scope.ServiceProvider.GetRequiredService<IRecurringJobManager>();
+
+    recurringJobManager.AddOrUpdate<ExpiredCodeCleanerJob>(
+        "clean-expired-codes",
+        job => job.CleanAsync(),
+        "*/5 * * * *"
+    );
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -118,6 +144,7 @@ using (var scope = app.Services.CreateScope())
 }
 
 app.UseMiddleware<GlobalExceptionMiddleware>();
+app.UseHangfireDashboard();
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();

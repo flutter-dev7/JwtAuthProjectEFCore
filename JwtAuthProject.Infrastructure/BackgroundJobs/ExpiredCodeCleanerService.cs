@@ -31,7 +31,9 @@ public class ExpiredCodeCleanerService : BackgroundService
                 await context.SaveChangesAsync();
             }
 
-            await Task.Delay(TimeSpan.FromMinutes(5), stoppingToken);
+            // await Task.Delay(TimeSpan.FromMinutes(5), stoppingToken);
+            var delay = CronHelper.GetDelayToNextRun(5);
+            await Task.Delay(delay, stoppingToken);
         }
     }
 }
