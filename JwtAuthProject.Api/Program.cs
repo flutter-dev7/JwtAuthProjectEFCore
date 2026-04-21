@@ -68,14 +68,14 @@ builder.Services.AddIdentity<AppUser, IdentityRole>()
 builder.Services.AddHangfire(config =>
     config.UsePostgreSqlStorage(options => options.UseNpgsqlConnection(connectionString)));
 
-builder.Services.AddStackExchangeRedisCache(options =>
-{
-    options.Configuration = "localhost:6379";
-    options.InstanceName = "JwtAuthProject";
-});
+// builder.Services.AddStackExchangeRedisCache(options =>
+// {
+//     options.Configuration = "localhost:6379";
+//     options.InstanceName = "JwtAuthProject";
+// });
 
 builder.Services.AddHangfireServer();
-// builder.Services.AddMemoryCache();
+builder.Services.AddMemoryCache();
 // builder.Services.AddHostedService<ExpiredCodeCleanerService>();
 
 builder.Services.AddScoped<IAuthService, AuthService>();
@@ -84,6 +84,7 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IVerificationCodeRepository, VerificationCodeRepository>();
 builder.Services.AddScoped<ICacheService, CacheService>();
+builder.Services.AddScoped<IFileService, FileService>();
 builder.Services.AddScoped<ExpiredCodeCleanerJob>();
 
 
@@ -145,6 +146,7 @@ using (var scope = app.Services.CreateScope())
 
 app.UseMiddleware<GlobalExceptionMiddleware>();
 app.UseHangfireDashboard();
+app.UseStaticFiles();
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();

@@ -61,4 +61,21 @@ public class UserController : BaseController
 
         return !res.IsSuccess ? HandleError(res) : Ok(res);
     }
+
+    [HttpPut("change-avatar/{id}")]
+    [Consumes("multipart/form-data")]
+    public async Task<IActionResult> UploadImageAsync([FromRoute] string id, IFormFile file)
+    {
+        var result = await _service.UpdateUserProfileAsync(id, file);
+
+        return !result.IsSuccess ? HandleError(result) : Ok(result);
+    }
+
+    [HttpDelete("delete-avatar/{id}")]
+    public async Task<IActionResult> DeleteImageAsync([FromRoute] string id)
+    {
+        var result = await _service.DeleteUserProfileAsync(id);
+
+        return !result.IsSuccess ? HandleError(result) : Ok(result);
+    }
 }

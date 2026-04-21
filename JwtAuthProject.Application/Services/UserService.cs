@@ -4,6 +4,7 @@ using JwtAuthProject.Application.DTOs.Users.Response;
 using JwtAuthProject.Application.Interfaces.Services;
 using JwtAuthProject.Domain.Entities;
 using JwtAuthProject.Domain.Enums;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,12 +15,14 @@ public class UserService : IUserService
     private readonly UserManager<AppUser> _userManager;
     private readonly RoleManager<IdentityRole> _roleManager;
     private readonly ICacheService _cache;
+    private readonly IFileService _fileService;
 
-    public UserService(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager, ICacheService cache)
+    public UserService(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager, ICacheService cache, IFileService fileService)
     {
         _userManager = userManager;
         _roleManager = roleManager;
         _cache = cache;
+        _fileService = fileService;
     }
 
     public async Task<Result<List<GetUserDto>>> GetAllUsersAsync()
@@ -40,11 +43,12 @@ public class UserService : IUserService
                 Id = user.Id,
                 Username = user.UserName!,
                 Email = user.Email!,
-                Role = roles.FirstOrDefault() ?? "User"
+                Role = roles.FirstOrDefault() ?? "User",
+                ImageUrl = user.ImageUrl
             });
         }
 
-        await _cache.SetAsync("all_users", result, TimeSpan.FromMinutes(10)); 
+        await _cache.SetAsync("all_users", result, TimeSpan.FromMinutes(10));
 
         return Result<List<GetUserDto>>.Ok(result);
     }
@@ -66,7 +70,8 @@ public class UserService : IUserService
             Id = user.Id,
             Username = user.UserName!,
             Email = user.Email!,
-            Role = roles.FirstOrDefault() ?? "User"
+            Role = roles.FirstOrDefault() ?? "User",
+            ImageUrl = user.ImageUrl
         };
 
         await _cache.SetAsync($"user_{id}", dto, TimeSpan.FromMinutes(10));
@@ -162,6 +167,48 @@ public class UserService : IUserService
 
         await _cache.RemoveAsync("all_users");
         await _cache.RemoveAsync($"user_{userId}");
+
+        return Result<bool>.Ok(true);
+    }
+
+    public async Task<Result<bool>> UpdateUserProfileAsync(string userId, IFormFile file)
+    {
+        var user = await _userManager.FindByIdAsync(userId);
+        if (user == null)
+            return Result<bool>.Fail("User not found", ErrorType.NotFound);
+
+        if (!string.IsNullOrEmpty(user.ImageUrl))
+            await _fileService.DeleteAsync(user.ImageUrl);
+
+        var fileName = await _fileService.UploadAsync(file, "profile");
+        if (fileName == null)
+            return Result<bool>.Fail("File upload found", ErrorType.NotFound);
+
+        user.ImageUrl = fileName;
+
+        await _userManager.UpdateAsync(user);
+        return Result<bool>.Ok(true);
+    }
+
+    public async Task<Result<bool>> DeleteUserProfileAsync(string userId)
+    {
+        var user = await _userManager.FindByIdAsync(userId);
+        if (user == null)
+            return Result<bool>.Fail("User not found", ErrorType.NotFound);
+
+        if (string.IsNullOrEmpty(user.ImageUrl))
+            return Result<bool>.Fail("User has no profile image", ErrorType.NotFound);
+
+        var deleted = await _fileService.DeleteAsync(user.ImageUrl);
+
+        if(!deleted)
+            return Result<bool>.Fail("Failed to image delete", ErrorType.Unknown);
+
+        user.ImageUrl = null;
+
+        await _userManager.UpdateAsync(user);
+        await _cache.RemoveAsync($"user_{userId}");
+        await _cache.RemoveAsync("all_users");
 
         return Result<bool>.Ok(true);
     }

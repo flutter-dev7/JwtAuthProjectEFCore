@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v10.0": {
       "JwtAuthProject.Application/1.0.0": {
         "dependencies": {
-          "JwtAuthProject.Domain": "1.0.0"
+          "JwtAuthProject.Domain": "1.0.0",
+          "Microsoft.AspNetCore.Http.Abstractions": "2.3.9"
         },
         "runtime": {
           "JwtAuthProject.Application.dll": {}
@@ -30,6 +31,28 @@
           "lib/net10.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll": {
             "assemblyVersion": "10.0.0.0",
             "fileVersion": "10.0.626.17701"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Http.Abstractions/2.3.9": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Features": "2.3.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.Abstractions.dll": {
+            "assemblyVersion": "2.3.9.0",
+            "fileVersion": "2.3.9.26007"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Http.Features/2.3.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "10.0.6"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.dll": {
+            "assemblyVersion": "2.3.0.0",
+            "fileVersion": "2.3.0.25014"
           }
         }
       },
@@ -303,6 +326,20 @@
       "sha512": "sha512-uIxxPb3NQ2SiPfA6x7ze7TbqlqwC30IJHythvX2USvv81Akp0wfWvVHis8VxHaurDJIhWOt94n+taJuEzrtNnA==",
       "path": "microsoft.aspnetcore.cryptography.keyderivation/10.0.6",
       "hashPath": "microsoft.aspnetcore.cryptography.keyderivation.10.0.6.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Http.Abstractions/2.3.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ULScB/0S9+qvf+yahjR+oQUp0GrvoDHJ9XS5gTqSjLjbjUDnHaJ1s8wo3RJMpaDfb1bawX4OgQM+YmvCUveR4Q==",
+      "path": "microsoft.aspnetcore.http.abstractions/2.3.9",
+      "hashPath": "microsoft.aspnetcore.http.abstractions.2.3.9.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Http.Features/2.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-f10WUgcsKqrkmnz6gt8HeZ7kyKjYN30PO7cSic1lPtH7paPtnQqXPOveul/SIPI43PhRD4trttg4ywnrEmmJpA==",
+      "path": "microsoft.aspnetcore.http.features/2.3.0",
+      "hashPath": "microsoft.aspnetcore.http.features.2.3.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Identity.EntityFrameworkCore/10.0.6": {
       "type": "package",

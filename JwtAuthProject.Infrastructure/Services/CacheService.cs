@@ -1,52 +1,45 @@
-using System;
 using System.Text.Json;
 using JwtAuthProject.Application.Interfaces.Services;
-using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace JwtAuthProject.Infrastructure.Services;
 
 public class CacheService : ICacheService
 {
-    private readonly IDistributedCache _cache;
+    private readonly IMemoryCache _cache;
     private readonly TimeSpan _defaultExpiration = TimeSpan.FromMinutes(5);
 
-    public CacheService(IDistributedCache cache)
+    public CacheService(IMemoryCache cache)
     {
         _cache = cache;
     }
 
-    public async Task<T?> GetAsync<T>(string key)
+    public Task<T?> GetAsync<T>(string key)
     {
-        var data = await _cache.GetStringAsync(key);
-
-        if(data == null)
-            return default;
-
-        return JsonSerializer.Deserialize<T>(data);
+        _cache.TryGetValue(key, out T? value);
+        return Task.FromResult(value);
     }
 
-    public async Task SetAsync<T>(string key, T value, TimeSpan? expiration)
+    public Task SetAsync<T>(string key, T value, TimeSpan? expiration)
     {
-        var options = new DistributedCacheEntryOptions
+        var options = new MemoryCacheEntryOptions
         {
             AbsoluteExpirationRelativeToNow = expiration ?? _defaultExpiration,
             SlidingExpiration = TimeSpan.FromMinutes(2)
         };
 
-        var json = JsonSerializer.Serialize(value);
-
-        await _cache.SetStringAsync(key, json, options);
+        _cache.Set(key, value, options);
+        return Task.CompletedTask;
     }
 
-    public async Task RemoveAsync(string key)
+    public Task RemoveAsync(string key)
     {
-        await _cache.RemoveAsync(key);
+        _cache.Remove(key);
+        return Task.CompletedTask;
     }
 
-    public async Task<bool> ExistsAsync(string key)
+    public Task<bool> ExistsAsync(string key)
     {
-        var data = await _cache.GetAsync(key);
-        return data != null;
+        return Task.FromResult(_cache.TryGetValue(key, out _));
     }
 }
